@@ -1,0 +1,23 @@
+{
+	"name": "DestinationDataset_es9",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Destination_BlobStorage_Customers",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": " website-customer",
+				"container": "database-bacpac"
+			},
+			"columnDelimiter": "|",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

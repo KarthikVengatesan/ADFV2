@@ -1,0 +1,63 @@
+{
+	"name": "CopyPipeline_es9",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_es9",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "."
+					},
+					{
+						"name": "Destination",
+						"value": "database-bacpac// website-customer"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT [CustomerID] \r\n      ,[CustomerName] \r\n      ,[CustomerCategoryName] \r\n      ,[PrimaryContact] \r\n      ,[AlternateContact] \r\n      ,[PhoneNumber] \r\n      ,[FaxNumber] \r\n      ,[BuyingGroupName] \r\n      ,[WebsiteURL] \r\n      ,[DeliveryMethod] \r\n      ,[CityName] \r\n  FROM [Website].[Customers] ",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"blockSizeInMB": 100
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_es9",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_es9",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}
