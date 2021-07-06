@@ -1,0 +1,12 @@
+{
+	"name": "SourceDataset_es9",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Source_SQLAzure_wwimporters",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}
